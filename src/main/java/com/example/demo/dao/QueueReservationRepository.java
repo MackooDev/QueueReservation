@@ -9,4 +9,6 @@ import org.springframework.stereotype.Repository;
 
 public interface QueueReservationRepository extends CrudRepository<QueueReservation, Integer> {
 
+
+
 }

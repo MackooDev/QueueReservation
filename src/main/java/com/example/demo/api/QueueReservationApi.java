@@ -1,6 +1,8 @@
 package com.example.demo.api;
 
 import com.example.demo.dao.entity.QueueReservation;
+import com.example.demo.service.QueueReservationService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -12,38 +14,38 @@ import java.util.Optional;
 @RequestMapping("/api/reservation")
 public class QueueReservationApi {
 
-    private List<QueueReservation> queueReservationList;
+    private QueueReservationService queueReservationList;
 
-    public QueueReservationApi(){
-        queueReservationList = new ArrayList<>();
-        queueReservationList.add(new QueueReservation(1, "Maciej", "Oklinski", LocalDate.of(2021, 12, 11 )));
-        queueReservationList.add(new QueueReservation(2, "Wiktoria", "Markiewicz", LocalDate.of(2021, 11, 5)));
+    @Autowired
+    public QueueReservationApi(QueueReservationService queueReservationService){
+        this.queueReservationList = queueReservationService;
     }
 
+
+
     @GetMapping("/all")
-    public List<QueueReservation> getAll(){
-        return queueReservationList;
+    public Iterable<QueueReservation> getAll(){
+        return queueReservationList.findAll();
     }
 
     @GetMapping
-    public QueueReservation getById(@RequestParam int index){
-         Optional<QueueReservation> first = queueReservationList.stream().filter(element -> element.getId() == index).findFirst();
-        return first.get();
+    public Optional<QueueReservation> getById(@RequestParam int index){
+        return queueReservationList.findById(index);
     }
 
     @PostMapping
-    public boolean addQueue (@RequestBody QueueReservation queueReservation){
-        return queueReservationList.add(queueReservation);
+    public QueueReservation addQueue (@RequestBody QueueReservation queueReservation){
+        return queueReservationList.save(queueReservation);
     }
 
     @PutMapping
-    public boolean updateQueue (@RequestBody QueueReservation queueReservation){
-        return queueReservationList.add(queueReservation);
+    public QueueReservation updateQueue (@RequestBody QueueReservation queueReservation){
+        return queueReservationList.save(queueReservation);
     }
 
     @DeleteMapping
-    public boolean deleteQueue(@RequestParam int index){
-        return queueReservationList.removeIf(element -> element.getId() == index);
+    public void deleteQueue(@RequestParam int index){
+       queueReservationList.deleteById(index);
     }
 
 }
