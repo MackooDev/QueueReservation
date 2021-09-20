@@ -1,8 +1,20 @@
 package com.example.demo.dao.entity;
 
+import net.bytebuddy.dynamic.loading.InjectionClassLoader;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.time.LocalDate;
 
+@Entity
+
 public class QueueReservation {
+
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
 
     private int id;
 
