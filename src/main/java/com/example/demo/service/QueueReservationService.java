@@ -5,11 +5,14 @@ import com.example.demo.dao.entity.QueueReservation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
+import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import java.time.LocalDate;
 import java.util.Optional;
 
+@Controller
 @Service
 public class QueueReservationService {
 
@@ -19,6 +22,11 @@ public class QueueReservationService {
     public QueueReservationService(QueueReservationRepository queueReservationRepository){
         this.queueReservationRepository = queueReservationRepository;
 
+    }
+
+    @GetMapping("/welcome")
+    public String get(){
+        return "welcome";
     }
 
     public Optional<QueueReservation> findById(int id){
@@ -46,6 +54,10 @@ public class QueueReservationService {
         save(new QueueReservation(1, "Maciej", "Oklinski", LocalDate.of(2021, 10, 12)));
         save(new QueueReservation(2, "Kamila", "Kintop", LocalDate.of(2021, 11, 19)));
     }
+
+
+
+
 
 
 
