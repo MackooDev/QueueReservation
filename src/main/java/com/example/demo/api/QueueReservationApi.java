@@ -3,12 +3,14 @@ package com.example.demo.api;
 import com.example.demo.dao.entity.QueueReservation;
 import com.example.demo.service.QueueReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
 
 @RestController
 @RequestMapping("/api/reservation")
@@ -20,8 +22,6 @@ public class QueueReservationApi {
     public QueueReservationApi(QueueReservationService queueReservationService){
         this.queueReservationList = queueReservationService;
     }
-
-
 
     @GetMapping("/all")
     public Iterable<QueueReservation> getAll(){

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th = "http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DataBaseData</title>
+</head>
+<body>
+
+<!--/*@thymesVar id="queueReservations" type="java"*/-->
+<tr th:each="queueReservation: ${queueReservations}" >
+    <td th:text="${queueReservation}"></td>
+</tr>
+
+</body>
+</html>
