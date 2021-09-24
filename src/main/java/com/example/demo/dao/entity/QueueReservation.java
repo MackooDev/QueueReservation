@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Entity
 
@@ -24,15 +25,23 @@ public class QueueReservation {
 
     private LocalDate localDate;
 
+    private LocalTime localTime;
+
     public QueueReservation() {
     }
 
-    public QueueReservation(int id, String name, String surName, LocalDate localDate) {
+    public QueueReservation(int id, String name, String surName, LocalDate localDate, LocalTime localTime) {
         this.id = id;
         this.name = name;
         this.surName = surName;
         this.localDate = localDate;
+        this.localTime = localTime;
+
     }
+
+
+
+
 
     public int getId() {
         return id;
@@ -66,6 +75,10 @@ public class QueueReservation {
         this.localDate = localDate;
     }
 
+    public LocalTime getLocalTime() {return localTime;}
+
+    public void setLocalTime(LocalTime localTime) {this.localTime = localTime;}
+
     @Override
     public String toString() {
         return "QueueReservation{" +
@@ -73,6 +86,7 @@ public class QueueReservation {
                 ", name='" + name + '\'' +
                 ", surName='" + surName + '\'' +
                 ", localDate=" + localDate +
+                ", localTime=" + localTime +
                 '}';
     }
 }

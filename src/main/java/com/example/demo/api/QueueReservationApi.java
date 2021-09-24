@@ -28,6 +28,8 @@ public class QueueReservationApi {
         return queueReservationList.findAll();
     }
 
+
+
     @GetMapping
     public Optional<QueueReservation> getById(@RequestParam int index){
         return queueReservationList.findById(index);
