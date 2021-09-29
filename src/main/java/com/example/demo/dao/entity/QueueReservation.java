@@ -27,8 +27,7 @@ public class QueueReservation {
 
     private LocalTime localTime;
 
-    public QueueReservation() {
-    }
+
 
     public QueueReservation(int id, String name, String surName, LocalDate localDate, LocalTime localTime) {
         this.id = id;
@@ -39,9 +38,8 @@ public class QueueReservation {
 
     }
 
-
-
-
+    public QueueReservation() {
+    }
 
     public int getId() {
         return id;
@@ -51,9 +49,7 @@ public class QueueReservation {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
-    }
+    public String getName() {return name;}
 
     public void setName(String name) {
         this.name = name;

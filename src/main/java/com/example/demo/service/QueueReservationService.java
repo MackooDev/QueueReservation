@@ -7,15 +7,18 @@ import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Optional;
 
 @Controller
 @Service
 public class QueueReservationService {
 
+    @Autowired
     private QueueReservationRepository queueReservationRepository;
 
     @Autowired
@@ -28,6 +31,18 @@ public class QueueReservationService {
     public String get(){
         return "welcome";
     }
+
+    @GetMapping("/getall")
+    public String getAll(Model model) {
+        Iterable<QueueReservation> queueReservations = queueReservationRepository.findAll();
+        model.addAttribute("queueReservations", queueReservations);
+
+        return "getall";
+    }
+
+
+
+
 
     public Optional<QueueReservation> findById(int id){
         return queueReservationRepository.findById(id);
@@ -51,8 +66,8 @@ public class QueueReservationService {
 
     @EventListener(ApplicationReadyEvent.class)
     public void fillDB() {
-        save(new QueueReservation(1, "Maciej", "Oklinski", LocalDate.of(2021, 10, 12)));
-        save(new QueueReservation(2, "Kamila", "Kintop", LocalDate.of(2021, 11, 19)));
+        save(new QueueReservation(1, "Maciej", "Oklinski", LocalDate.of(2021, 10, 12), LocalTime.of(14,00)));
+        save(new QueueReservation(2, "Kamila", "Kintop", LocalDate.of(2021, 11, 19),LocalTime.of(17, 00)));
     }
 
 
