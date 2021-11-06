@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <link rel="stylesheet"
+          href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+          integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
+          crossorigin="anonymous">
+    <title>StadninaTR&#174;</title>
+
+</head>
+<body>
+
+<div layout:fragment="content" align="center">
+    <form th:action="@{/zarejestruj}" method="post" th:object="${queueReservation}" style="max-width: 400px; margin: auto">
+        <div>
+            <p><b>Zapisz się</b></p>
+            <p>
+                <input type="text" name="Id" th:field="*{id}" class="form-control" placeholder="Id" required/>
+            </p>
+            <p>
+                <input type="text" name="Imię" th:field="*{name}" class="form-control" placeholder="Imię" required/>
+            </p>
+            <p>
+                <input type="text" name="Nazwisko" th:field="*{surName}" class="form-control" placeholder="Nazwisko" required/>
+            </p>
+            <p>
+                <input type="date" name="Dzień" th:field="*{localDate}" class="form-control" placeholder="Dzień" required/>
+            </p>
+            <p>
+                <input type="time" name="Godzina" th:field="*{localTime}" class="form-control" placeholder="Godzina" maxlength="11" minlength="11" required/>
+            </p>
+            <p>
+                <input type="submit" value="Zarejestruj" class="btn btn-primary"/>
+            </p>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

@@ -35,7 +35,7 @@ public class QueueReservationApi {
         return queueReservationList.findById(index);
     }
 
-    @PostMapping
+    @PostMapping("/zarejestruj")
     public QueueReservation addQueue (@RequestBody QueueReservation queueReservation){
         return queueReservationList.save(queueReservation);
     }

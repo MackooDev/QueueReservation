@@ -2,6 +2,7 @@ package com.example.demo.dao.entity;
 
 import net.bytebuddy.dynamic.loading.InjectionClassLoader;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.lang.NonNull;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,14 +18,15 @@ public class QueueReservation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
 
+    @NonNull
     private int id;
-
+    @NonNull
     private String name;
-
+    @NonNull
     private String surName;
-
+    @NonNull
     private LocalDate localDate;
-
+    @NonNull
     private LocalTime localTime;
 
 
