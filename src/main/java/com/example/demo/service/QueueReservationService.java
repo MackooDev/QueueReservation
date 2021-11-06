@@ -8,10 +8,13 @@ import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -32,14 +35,24 @@ public class QueueReservationService {
         return "welcome";
     }
 
+
     @GetMapping("/getall")
     public String getAll(Model model) {
-        Iterable<QueueReservation> queueReservations = queueReservationRepository.findAll();
-        model.addAttribute("queueReservations", queueReservations);
+
+        List<QueueReservation> queueReservationList = (List<QueueReservation>) queueReservationRepository.findAll();
+
+        model.addAttribute("queueReservations", queueReservationList);
 
         return "getall";
     }
 
+    @RequestMapping(value = "/zarejestruj",method = {RequestMethod.GET, RequestMethod.POST})
+    public String zarejestruj(@Validated QueueReservation queueReservation, Model model){
+
+        model.addAttribute("queueReservation", new QueueReservation());
+
+        return "registration";
+    }
 
 
 

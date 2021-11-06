@@ -3,13 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <title>DataBaseData</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous">
 </head>
 <body>
 
-<!--/*@thymesVar id="queueReservations" type="java"*/-->
-<tr th:each="queueReservation: ${queueReservations}" >
-    <td th:text="${queueReservation}"></td>
-</tr>
+
+
+<div>
+    <table class="table table-striped table-responsive-md">
+        <thead>
+        <tr>
+            <th>lp</th>
+            <th>Imię</th>
+            <th>Nazwisko</th>
+            <th>Godzina</th>
+            <th>Dzień</th>
+
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr th:each="QueueReservation: ${queueReservations}">
+            <td th:text="${QueueReservation.getId()}"></td>
+            <td th:text="${QueueReservation.getName()}"></td>
+            <td th:text="${QueueReservation.getSurName()}"></td>
+            <td th:text="${QueueReservation.getLocalTime()}"></td>
+            <td th:text="${QueueReservation.getLocalDate()}"></td>
+
+        </tr>
+        </tbody>
+    </table>
+</div>
+
 
 </body>
 </html>
